@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXA VPN</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#07111f;color:white;
+ font-family:Arial,sans-serif;text-align:center;
+}
+header{padding:28px;color:#24e6a0;font-size:28px;font-weight:bold}
+.card{
+ margin:20px;padding:25px;background:#102238;
+ border-radius:22px;
+}
+.status{color:#aaa;margin:15px}
+.connect{
+ width:155px;height:155px;border-radius:50%;
+ border:5px solid #20dfa0;background:#102d3d;
+ color:#20dfa0;font-size:20px;font-weight:bold;
+ margin:25px auto;cursor:pointer;
+}
+.connect:active{transform:scale(.96)}
+select{
+ width:100%;padding:15px;border-radius:12px;
+ background:#071a2c;color:white;font-size:16px;
+}
+.info{display:flex;justify-content:space-around;margin-top:25px}
+small{color:#aaa}
+</style>
+</head>
+<body>
+
+<header>NEXA VPN</header>
+
+<div class="card">
+ <h2>Secure Connection</h2>
+ <div class="status" id="status">Not Connected</div>
+
+ <button class="connect" onclick="toggleVPN()">
+ CONNECT
+ </button>
+
+ <p>Select Location</p>
+ <select id="server">
+  <option>Auto Select</option>
+  <option>Germany</option>
+  <option>United States</option>
+  <option>Netherlands</option>
+  <option>Singapore</option>
+ </select>
+
+ <div class="info">
+  <div>↓<p id="download">0 KB/s</p><small>Download</small></div>
+  <div>↑<p id="upload">0 KB/s</p><small>Upload</small></div>
+ </div>
+</div>
+
+<p style="color:#20dfa0">NEXA TECHNOLOGIES</p>
+<small>Privacy • Security • Freedom</small>
+
+<script>
+let connected=false;
+
+function toggleVPN(){
+ const status=document.getElementById("status");
+ const btn=document.querySelector(".connect");
+
+ if(!connected){
+  status.innerText="Demo Mode - Not Protected";
+  btn.innerText="DISCONNECT";
+  btn.style.borderColor="#ffb44c";
+  btn.style.color="#ffb44c";
+  connected=true;
+ }else{
+  status.innerText="Not Connected";
+  btn.innerText="CONNECT";
+  btn.style.borderColor="#20dfa0";
+  btn.style.color="#20dfa0";
+  connected=false;
+ }
+}
+</script>
+</body>
+</html>
